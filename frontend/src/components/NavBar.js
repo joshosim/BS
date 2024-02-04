@@ -14,12 +14,8 @@ const NavBar = () => {
         </ul>
         <div className="flex items-center gap-5">
           <Link to="/profile">Profile</Link>
-          <button
-            onClick={() => {
-              alert("Logout");
-            }}
-          >
-            Logout
+          <button>
+            <Link to="/login">Logout</Link>
           </button>
         </div>
       </div>

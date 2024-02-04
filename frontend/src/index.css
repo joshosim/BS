@@ -9,3 +9,9 @@ body {
     sans-serif;
   background-color: #E0D8DE;
 }
+
+input,
+button {
+  display: block;
+  width: 100%;
+}
