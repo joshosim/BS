@@ -1,55 +1,49 @@
 import React, { useState } from "react";
 
 const AddNewBook = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [bookTitle, setBookTitle] = useState("");
+  const [bookDescription, setBookDescription] = useState("");
+  const [author, setAuthor] = useState("");
+  const [image, setImage] = useState(null);
 
   return (
     <div className="bg-[#CFD2B2]">
       <form className="mx-auto rounded-2xl my-10  p-3 font-bold">
         <h1 className="text-center text-2xl">Add a New Book</h1>
-        <label htmlFor="email">Title:</label>
+        <label htmlFor="title">Title:</label>
         <input
-          type="email"
-          value={email}
+          type="text"
+          value={bookTitle}
           onChange={(e) => {
-            setEmail(e.target.value);
+            setBookTitle(e.target.value);
           }}
           className="px-2 py-2 rounded-xl my-2"
         />
-        <label htmlFor="password">Author:</label>
+
+        <label htmlFor="bookDescription">Book Description:</label>
         <input
-          type="password"
-          value={password}
+          type="text"
+          value={bookDescription}
           onChange={(e) => {
-            setPassword(e.target.value);
+            setBookDescription(e.target.value);
           }}
           className="px-2 py-2 rounded-xl my-2"
         />
-        <label htmlFor="password">Book Description:</label>
+        <label htmlFor="author">Author:</label>
         <input
-          type="password"
-          value={password}
+          type="text"
+          value={author}
           onChange={(e) => {
-            setPassword(e.target.value);
+            setAuthor(e.target.value);
           }}
           className="px-2 py-2 rounded-xl my-2"
         />
-        <label htmlFor="password">Book Image:</label>
+        <label htmlFor="bookImage">Book Image:</label>
         <input
-          type="password"
-          value={password}
+          type="file"
+          value={image}
           onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          className="px-2 py-2 rounded-xl my-2"
-        />
-        <label htmlFor="password">Number of Pages:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
+            setImage(e.target.value);
           }}
           className="px-2 py-2 rounded-xl my-2"
         />

@@ -32,8 +32,9 @@ const Login = () => {
       <span>
         Don't have an account{" "}
         <Link to="/signup" className=" font-light underline">
-          Signup?
+          Signup
         </Link>
+        ?
       </span>
     </form>
   );
