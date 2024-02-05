@@ -14,10 +14,10 @@ const Profile = () => {
   };
 
   return (
-    <div className="font-bold h-screen relative">
-      <div className="h-[50%] bg-[#ED4D6E]"></div>
-      <div className="h-[50%] bg-[#E0D8DE]"></div>
-      <div className="absolute top-[17.5%] left-[17.5%] rounded-3xl bg-[#E0D8DE] shadow-black shadow-md h-[65vh] w-[65vw] grid place-content-center text-center ">
+    <div className="font-bold h-screen flex items-center justify-center">
+      {/* <div className="h-[50%] bg-[#ED4D6E]"></div>
+      <div className="h-[50%] bg-[#E0D8DE]"></div> */}
+      <div className="relative rounded-3xl bg-[#E0D8DE] shadow-black shadow-md h-[75%] w-[85%] grid place-content-center text-center ">
         {update && (
           <div>
             <img
@@ -30,16 +30,19 @@ const Profile = () => {
               className="absolute top-0 right-0 m-5 cursor-pointer"
               onClick={handleEdit}
             />
-            <h1 className="text-3xl my-2">Osim Uka Okpan</h1>
-            <h2 className="text-2xl my-2 font-light">
+
+            <h1 className="text-2xl md:text-3xl my-2">Osim Uka Okpan</h1>
+            <h2 className="text-xl md:text-2xl my-2 font-light">
               25 <span>years</span>
             </h2>
-            <h3 className="text-xl my-2 font-light">+2347066530998</h3>
+            <h3 className="text-[1rem] md:text-xl my-2 font-light">
+              +2347066530998
+            </h3>
           </div>
         )}
         {!update && (
           <div className="text-start">
-            <form action="">
+            <form action="" className="p-3">
               <h1 className="text-2xl mb-2 text-center">Update Profile</h1>
               <label htmlFor="name">Name:</label>
               <input
