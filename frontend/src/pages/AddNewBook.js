@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const AddNewBook = () => {
   const [bookTitle, setBookTitle] = useState("");
@@ -7,8 +8,8 @@ const AddNewBook = () => {
   const [image, setImage] = useState(null);
 
   return (
-    <div className="bg-[#CFD2B2]">
-      <form className="mx-auto rounded-2xl my-10  p-3 font-bold">
+    <div className="bg-[#CFD2B2] max-w-[350px] flex justify-center items-center mx-auto">
+      <form className="p-3 font-bold">
         <h1 className="text-center text-2xl">Add a New Book</h1>
         <label htmlFor="title">Title:</label>
         <input
@@ -47,9 +48,11 @@ const AddNewBook = () => {
           }}
           className="px-2 py-2 rounded-xl my-2"
         />
-        <button className="rounded-xl bg-black text-white py-2 my-2">
-          Add
-        </button>
+        <Link to="/">
+          <button className="rounded-xl bg-black text-white py-2 my-2">
+            Add
+          </button>
+        </Link>
       </form>
     </div>
   );

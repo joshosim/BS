@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import Favourite from "./pages/Favourite";
+import AddNewBook from "./pages/AddNewBook";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/signup" element={<Signup />}></Route>
             <Route path="/favourite" element={<Favourite />}></Route>
             <Route path="/profile" element={<Profile />}></Route>
+            <Route path="/addbook" element={<AddNewBook />}></Route>
           </Routes>
         </BrowserRouter>
       </div>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import AddNewBook from "../components/AddNewBook";
 import { data } from "../fake-data.js/data";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { FaDownload } from "react-icons/fa6";
@@ -11,8 +10,8 @@ const Home = () => {
     setHeart(!heart);
   };
   return (
-    <div className="font-bold grid grid-cols-2 md:grid-cols-3">
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 p-4 col-span-2 border-r-4 border-r-black h-screen overflow-y-auto place-items-center">
+    <div className="font-bold relative">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 p-4 h-[85vh] overflow-y-auto place-items-center">
         {data.map((elements) => {
           return (
             <div className="border-2 border-black rounded-xl relative w-[250px]">
@@ -54,7 +53,6 @@ const Home = () => {
           );
         })}
       </div>
-      <AddNewBook className="md:col-span-1 h-screen overflow-y-auto" />
     </div>
   );
 };
