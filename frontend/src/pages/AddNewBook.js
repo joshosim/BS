@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useBookContext } from "../hooks/useBookContext";
 
 const AddNewBook = () => {
   const [bookTitle, setBookTitle] = useState("");
   const [bookDescription, setBookDescription] = useState("");
   const [author, setAuthor] = useState("");
   const [image, setImage] = useState(null);
-
+  const { dispatch } = useBookContext();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="bg-[#CFD2B2] max-w-[350px] flex justify-center items-center mx-auto">
-      <form className="p-3 font-bold">
+      <form className="p-3 font-bold" onSubmit={handleSubmit}>
         <h1 className="text-center text-2xl">Add a New Book</h1>
         <label htmlFor="title">Title:</label>
         <input

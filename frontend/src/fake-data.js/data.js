@@ -1,6 +1,6 @@
 export const data = [
   {
-    name: "Dynamis of Nodejs",
+    name: "Dynamis of Expressjs",
     author: "idongesit",
   },
   {
