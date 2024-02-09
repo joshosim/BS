@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { data } from "../fake-data.js/data";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { FaDownload } from "react-icons/fa6";
@@ -6,6 +6,13 @@ import BookImage from "../images/IMG-20230508-WA0042.jpg";
 
 const Home = () => {
   const [heart, setHeart] = useState(false);
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const response = await fetch("localhost:4000/api/book/");
+    };
+  }, []);
+
   const handleChange = () => {
     setHeart(!heart);
   };
@@ -14,7 +21,10 @@ const Home = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 p-4 h-[85vh] overflow-y-auto place-items-center">
         {data.map((elements) => {
           return (
-            <div className="border-2 border-black rounded-xl relative w-[250px]">
+            <div
+              className="border-2 border-black rounded-xl relative w-[250px]"
+              key={elements.id}
+            >
               <div className="h-[250px] bg-[#010001] rounded-tl-xl rounded-tr-xl">
                 <img
                   src={BookImage}
