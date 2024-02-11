@@ -3,7 +3,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { FaDownload } from "react-icons/fa6";
 import BookImage from "../images/IMG-20230508-WA0042.jpg";
 
-const BookDetails = ({ book }) => {
+const Book = ({ book }) => {
   const { title, description, image, author } = book;
   const [heart, setHeart] = useState(false);
   const handleChange = () => {
@@ -41,10 +41,9 @@ const BookDetails = ({ book }) => {
       <div className="text-center">
         <h1>{title}</h1>
         <p className="font-light">{author}</p>
-        <p>{description}</p>
       </div>
     </div>
   );
 };
 
-export default BookDetails;
+export default Book;

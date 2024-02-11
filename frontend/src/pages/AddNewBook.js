@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useBookContext } from "../hooks/useBookContext";
+// import { useBookContext } from "../hooks/useBookContext";
 
 const AddNewBook = () => {
   const [bookTitle, setBookTitle] = useState("");
   const [bookDescription, setBookDescription] = useState("");
   const [author, setAuthor] = useState("");
   const [image, setImage] = useState(null);
-  const { dispatch } = useBookContext();
+  // const { dispatch } = useBookContext();
   const handleSubmit = (e) => {
     e.preventDefault();
   };
