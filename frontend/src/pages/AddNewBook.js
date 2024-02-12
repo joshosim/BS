@@ -13,7 +13,13 @@ const AddNewBook = () => {
 
     const book = { title, description, author };
 
-    const response = await fetch("/api/book", {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("author", author);
+
+    const response = await fetch("/api/book/upload", formData, {
       method: "POST",
       body: JSON.stringify(book),
       headers: {
