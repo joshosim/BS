@@ -1,15 +1,36 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-// import { useBookContext } from "../hooks/useBookContext";
+import { useBookContext } from "../hooks/useBookContext";
 
 const AddNewBook = () => {
-  const [bookTitle, setBookTitle] = useState("");
-  const [bookDescription, setBookDescription] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [author, setAuthor] = useState("");
-  const [image, setImage] = useState(null);
-  // const { dispatch } = useBookContext();
-  const handleSubmit = (e) => {
+  const [file, setFile] = useState(null);
+  const { dispatch } = useBookContext();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const book = { title, description, author };
+
+    const response = await fetch("/api/book", {
+      method: "POST",
+      body: JSON.stringify(book),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const json = await response.json();
+    if (!response.ok) {
+      alert(json.error);
+    }
+    if (response.ok) {
+      setAuthor("");
+      setDescription("");
+      setTitle("");
+      alert("New Book Added", json);
+      dispatch({ type: "ADD_BOOK", payload: json });
+    }
   };
   return (
     <div className="bg-[#CFD2B2] max-w-[350px] flex justify-center items-center mx-auto">
@@ -18,19 +39,19 @@ const AddNewBook = () => {
         <label htmlFor="title">Title:</label>
         <input
           type="text"
-          value={bookTitle}
+          value={title}
           onChange={(e) => {
-            setBookTitle(e.target.value);
+            setTitle(e.target.value);
           }}
           className="px-2 py-2 rounded-xl my-2"
         />
 
-        <label htmlFor="bookDescription">Book Description:</label>
+        <label htmlFor="Description">Book Description:</label>
         <input
           type="text"
-          value={bookDescription}
+          value={description}
           onChange={(e) => {
-            setBookDescription(e.target.value);
+            setDescription(e.target.value);
           }}
           className="px-2 py-2 rounded-xl my-2"
         />
@@ -43,20 +64,17 @@ const AddNewBook = () => {
           }}
           className="px-2 py-2 rounded-xl my-2"
         />
-        <label htmlFor="bookImage">Book Image:</label>
+        <label htmlFor="file">Upload File</label>
         <input
           type="file"
-          value={image}
           onChange={(e) => {
-            setImage(e.target.value);
+            setFile(e.target.files[0]);
           }}
           className="px-2 py-2 rounded-xl my-2"
         />
-        <Link to="/">
-          <button className="rounded-xl bg-black text-white py-2 my-2">
-            Add
-          </button>
-        </Link>
+        <button className="rounded-xl bg-black text-white py-2 my-2  focus:scale-105">
+          Add
+        </button>
       </form>
     </div>
   );

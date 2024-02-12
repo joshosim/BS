@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { FaDownload } from "react-icons/fa6";
 import BookImage from "../images/IMG-20230508-WA0042.jpg";
-
+// import { useBookContext } from "../hooks/useBookContext";
+// import { useParams } from "react-router-dom";
 const BookDetails = ({ book }) => {
-  const { title, description, image, author } = book;
+  //  const { id } = useParams();
+  //  const { data } = useData();
+
+  //  const item = data.find((item) => item.id === parseInt(id));
+  //const { books } = useBookContext();
+  const { title, description, author } = book;
   const [heart, setHeart] = useState(false);
   const handleChange = () => {
     setHeart(!heart);

@@ -12,11 +12,11 @@ const bookSchema = new Schema(
       type: String,
       required: true,
     },
-    image: {
+    author: {
       type: String,
       required: true,
     },
-    author: {
+    filePath: {
       type: String,
       required: true,
     },
