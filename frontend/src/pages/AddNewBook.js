@@ -5,7 +5,7 @@ const AddNewBook = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [author, setAuthor] = useState("");
-  const [file, setFile] = useState(null);
+  //const [file, setFile] = useState(null);
   const { dispatch } = useBookContext();
 
   const handleSubmit = async (e) => {
@@ -13,13 +13,14 @@ const AddNewBook = () => {
 
     const book = { title, description, author };
 
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("author", author);
+    // const formData = new FormData();
+    // formData.append("file", file);
+    // formData.append("title", title);
+    // formData.append("description", description);
+    // formData.append("author", author);
 
-    const response = await fetch("/api/book/upload", formData, {
+    const response = await fetch("/api/book", {
+      // const response = await fetch("/api/book/upload", formData, {
       method: "POST",
       body: JSON.stringify(book),
       headers: {
@@ -74,7 +75,7 @@ const AddNewBook = () => {
         <input
           type="file"
           onChange={(e) => {
-            setFile(e.target.files[0]);
+            // setFile(e.target.files[0]);
           }}
           className="px-2 py-2 rounded-xl my-2"
         />

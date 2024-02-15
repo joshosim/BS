@@ -8,7 +8,7 @@ router.get("/", getBooks);
 //get a single book
 router.get("/:id", (req, res) => res.send("Getting a Single book"));
 //post book
-router.post("/upload", createBook);
+router.post("/", createBook);
 //delete book
 router.delete("/:id", (req, res) => res.json("Deleting a Book"));
 //update a book
