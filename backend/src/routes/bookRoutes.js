@@ -1,12 +1,16 @@
 const express = require("express");
-const { getBooks, createBook } = require("../controllers/bookController");
+const {
+  getBooks,
+  createBook,
+  getBook,
+} = require("../controllers/bookController");
 const multer = require("multer");
 const router = express.Router();
 
 //get book
 router.get("/", getBooks);
 //get a single book
-router.get("/:id", (req, res) => res.send("Getting a Single book"));
+router.get("/:id", getBook);
 //post book
 router.post("/", createBook);
 //delete book
