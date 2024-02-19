@@ -1,5 +1,5 @@
 const Book = require("../model/BookModel");
-//const multer = require("multer");
+
 const mongoose = require("mongoose");
 
 //to get all the books
@@ -27,13 +27,13 @@ const getBook = async (req, res) => {
 
 const createBook = async (req, res) => {
   const { title, description, author } = req.body;
-  //const filePath = req.file.path;
+  const { file } = req.file;
   try {
     const book = await Book.create({
       title,
       description,
       author,
-      // filePath,
+      file,
     });
     res.status(200).json(book);
   } catch (error) {

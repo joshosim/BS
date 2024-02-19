@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import Pic from "../images/engrude-removebg-preview.png";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Profile = () => {
   //to handle the editing of profile of the user
@@ -9,6 +10,8 @@ const Profile = () => {
   const [phone, setPhone] = useState("");
   const [image, setImage] = useState(null);
   const [update, setUpdate] = useState(true);
+
+  const { user } = useAuthContext();
   const handleEdit = () => {
     setUpdate(false);
   };
@@ -31,12 +34,12 @@ const Profile = () => {
               onClick={handleEdit}
             />
 
-            <h1 className="text-2xl md:text-3xl my-2">Osim Uka Okpan</h1>
+            <h1 className="text-2xl md:text-3xl my-2">{user.username}</h1>
             <h2 className="text-xl md:text-2xl my-2 font-light">
-              25 <span>years</span>
+              {user.age} <span>years</span>
             </h2>
             <h3 className="text-[1rem] md:text-xl my-2 font-light">
-              +2347066530998
+              {user.phone}
             </h3>
           </div>
         )}
