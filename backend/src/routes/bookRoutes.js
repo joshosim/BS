@@ -1,4 +1,6 @@
 const express = require("express");
+const path = require("path");
+const Book = require("../model/BookModel");
 const {
   getBooks,
   createBook,
@@ -13,15 +15,55 @@ router.get("/", getBooks);
 router.get("/:id", getBook);
 //post book
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination(req, file, cb) {
     return cb(null, "../public/Images");
   },
-  filename: function (req, file, cb) {
-    return cb(null, `${Date.now()}_${file.originalname}`);
+  filename(req, file, cb) {
+    return cb(null, `${new Date().getTime()}_${file.originalname}`);
   },
 });
-const upload = multer({ storage });
-router.post("/upload", upload.single("file"), createBook);
+const upload = multer({
+  storage,
+  limits: {
+    fileSize: 100000000, //max file size 100MB = 100000000bytes
+  },
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(jpeg|jpg|png|pdf|doc|docx|xlsx|xls)$/)) {
+      return cb(
+        new Error(
+          "only upload files with jpg, jpeg, png, pdf, doc, docx, xslx, xls format."
+        )
+      );
+    }
+    cb(undefined, true); //continue with upload
+  },
+});
+router.post(
+  "/upload",
+  upload.single("file"),
+  async (req, res) => {
+    const { title, description, author } = req.body;
+    const { path, mimetype } = req.file;
+    try {
+      const book = new Book({
+        title,
+        description,
+        author,
+        file_path: path,
+        file_mimetype: mimetype,
+      });
+      await book.save();
+      res.send("file uploaded successfully");
+    } catch (error) {
+      res.status(400).send("Error while uploading file. Try again later.");
+    }
+  },
+  (error, req, res, next) => {
+    if (error) {
+      res.status(500).send(error.message);
+    }
+  }
+);
 //delete book
 router.delete("/:id", (req, res) => res.json("Deleting a Book"));
 //update a book

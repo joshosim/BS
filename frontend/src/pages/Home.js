@@ -1,19 +1,24 @@
-import React, { useEffect } from "react";
-import { useBookContext } from "../hooks/useBookContext";
+import React, { useEffect, useState } from "react";
 import Book from "../components/Book";
+import axios from "axios";
+import download from "downloadjs";
 
 const Home = () => {
-  const { books, dispatch } = useBookContext();
+  const [bookList, setBookList] = useState([]);
+  const [errorMsg, setErrorMsg] = useState("");
+
   useEffect(() => {
     const fetchBooks = async () => {
-      const response = await fetch("/api/book/");
-      const json = await response.json();
-      if (response.ok) {
-        dispatch({ type: "SET_BOOK", payload: json });
+      try {
+        const { data } = await axios.get("/api/book/files");
+        setErrorMsg("");
+        setBookList(data);
+      } catch (error) {
+        error.response && setErrorMsg(error.response.data);
       }
     };
     fetchBooks();
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="font-bold relative">
