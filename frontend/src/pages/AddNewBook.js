@@ -3,7 +3,7 @@ import { useBookContext } from "../hooks/useBookContext";
 import axios from "axios";
 import Dropzone from "react-dropzone";
 
-const AddNewBook = () => {
+const AddNewBook = ({ props }) => {
   const [file, setFile] = useState(null);
   const [previewSrc, setPreviewSrc] = useState("");
   const [state, setState] = useState({
@@ -68,6 +68,7 @@ const AddNewBook = () => {
               "Content-Type": "multipart/form-data",
             },
           });
+          props.history.push("/");
         } else {
           setErrorMsg("Please select a file to add.");
         }

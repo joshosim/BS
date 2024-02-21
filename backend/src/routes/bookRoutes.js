@@ -4,15 +4,15 @@ const Book = require("../model/BookModel");
 const {
   getBooks,
   createBook,
-  getBook,
+  downloadBook,
 } = require("../controllers/bookController");
 const multer = require("multer");
 const router = express.Router();
 
 //get book
 router.get("/", getBooks);
-//get a single book
-router.get("/:id", getBook);
+//download a single book
+router.get("/download/:id", downloadBook);
 //post book
 const storage = multer.diskStorage({
   destination(req, file, cb) {
