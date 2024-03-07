@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useSignup } from "../hooks/useSignup";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -7,12 +6,8 @@ const Signup = () => {
   const [age, setAge] = useState("");
   const [phone, setPhone] = useState("");
 
-  const { signup, error, isLoading } = useSignup();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    await signup(username, phone, age, password);
   };
 
   return (
@@ -57,17 +52,9 @@ const Signup = () => {
         }}
         className="px-2 py-2 rounded-xl my-2"
       />
-      <button
-        className="rounded-xl bg-black text-white py-2 my-2"
-        disabled={isLoading}
-      >
+      <button className="rounded-xl bg-black text-white py-2 my-2">
         Sign up
       </button>
-      {error && (
-        <div className="border-red-500 text-red-500 border-2 my-[10px] mx-0 rounded-xl p-2.5 bg-red-200 w-full font-bold">
-          {error}
-        </div>
-      )}
     </form>
   );
 };

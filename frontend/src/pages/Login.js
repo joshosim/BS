@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useLogin } from "../hooks/useLogin";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login, error, isLoading } = useLogin();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    await login(username, password);
   };
 
   return (
@@ -36,17 +32,9 @@ const Login = () => {
         }}
         className="px-2 py-2 rounded-xl my-2"
       />
-      <button
-        className="rounded-xl bg-black text-white py-2 my-2"
-        disabled={isLoading}
-      >
+      <button className="rounded-xl bg-black text-white py-2 my-2">
         Log in
       </button>
-      {error && (
-        <div className="border-red-500 text-red-500 border-2 my-[20px] mx-0 rounded p-2.5 bg-white w-full">
-          {error}
-        </div>
-      )}
     </form>
   );
 };
