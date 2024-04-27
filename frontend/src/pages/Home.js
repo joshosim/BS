@@ -22,16 +22,22 @@ const Home = () => {
           bookList.map((bookFile) => (
             <div
               key={bookFile._id}
-              className="border-2 border-black rounded-xl relative w-[250px]"
+              className="border-2 border-white rounded-xl relative w-[250px]"
             >
-              <img src={BookImage} alt="/" />
-              <p className="max-w-[250px]">{bookFile.name}</p>
-              <div className="text-center">
-                <p>
-                  {formatDistanceToNow(new Date(bookFile.createdAt), {
-                    addSuffix: true,
-                  })}
-                </p>
+              <div class="max-w-sm rounded-t-xl overflow-hidden shadow-lg">
+                <img
+                  class="w-full"
+                  src={BookImage}
+                  alt="Sunset in the mountains"
+                />
+                <div class="px-6 py-4">
+                  <div class="font-bold text-xl mb-2">{bookFile.name}</div>
+                  <p className="font-light">
+                    {formatDistanceToNow(new Date(bookFile.createdAt), {
+                      addSuffix: true,
+                    })}
+                  </p>
+                </div>
               </div>
             </div>
           ))}

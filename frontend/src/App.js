@@ -1,19 +1,21 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import NavBar from "./components/NavBar";
+import Header from "./components/Header";
 import BookDetails from "./pages/BookDetails";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import Favourite from "./pages/Favourite";
 import AddNewBook from "./pages/AddNewBook";
+import About from "./pages/About";
+import Error from "./pages/Error";
 
 function App() {
   return (
     <div className="h-screen">
       <div className="">
         <BrowserRouter>
-          <NavBar />
+          <Header />
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/book-details/:id" element={<BookDetails />}></Route>
@@ -22,6 +24,8 @@ function App() {
             <Route path="/favourite" element={<Favourite />}></Route>
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/addbook" element={<AddNewBook />}></Route>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/error" element={<Error />}></Route>
           </Routes>
         </BrowserRouter>
       </div>
