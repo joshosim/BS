@@ -16,8 +16,6 @@ const Profile = () => {
 
   return (
     <div className="font-bold h-screen flex items-center justify-center">
-      {/* <div className="h-[50%] bg-[#ED4D6E]"></div>
-      <div className="h-[50%] bg-[#E0D8DE]"></div> */}
       <div className="relative rounded-3xl bg-[#E0D8DE] shadow-black shadow-md h-[75%] w-[85%] grid place-content-center text-center ">
         {update && (
           <div>

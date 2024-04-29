@@ -8,6 +8,7 @@ import Profile from "./pages/Profile";
 import Favourite from "./pages/Favourite";
 import About from "./pages/About";
 import Error from "./pages/Error";
+import AddNewBook from "./pages/AddNewBook";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/signup" element={<Signup />}></Route>
             <Route path="/favourite" element={<Favourite />}></Route>
             <Route path="/profile" element={<Profile />}></Route>
+            <Route path="/addbook" element={<AddNewBook />}></Route>
             <Route path="/about" element={<About />}></Route>
             <Route path="/error" element={<Error />}></Route>
           </Routes>
