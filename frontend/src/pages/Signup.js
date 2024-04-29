@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Logo from "../images/logo.png";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -8,17 +10,18 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    add(username, password, age, phone);
+  };
+  const add = (username, password, age, phone) => {
+    console.log(username + password + age + phone);
   };
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <a
-          href="#"
-          className="-m-1.5 p-1.5 font-bold text-3xl grid place-content-center"
-        >
-          BS
-        </a>
+        <Link to="/">
+          <img src={Logo} alt="logo" className="w-36" />
+        </Link>
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Sign Up
         </h2>
@@ -52,6 +55,48 @@ const Signup = () => {
               />
             </div>
           </div>
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium leading-6 text-gray-900"
+            >
+              Phone
+            </label>
+            <div className="mt-2">
+              <input
+                id="phone"
+                name="phone"
+                type="phone"
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                }}
+                autoComplete="phone"
+                required
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              htmlFor="Age"
+              className="block text-sm font-medium leading-6 text-gray-900"
+            >
+              Age
+            </label>
+            <div className="mt-2">
+              <input
+                id="Age"
+                name="Age"
+                type="Age"
+                onChange={(e) => {
+                  setAge(e.target.value);
+                }}
+                autoComplete="age"
+                required
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
 
           <div>
             <div className="flex items-center justify-between">
@@ -62,12 +107,12 @@ const Signup = () => {
                 Password
               </label>
               <div className="text-sm">
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="font-semibold text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot password?
-                </a>
+                </Link>
               </div>
             </div>
             <div className="mt-2">
@@ -97,12 +142,12 @@ const Signup = () => {
 
         <p className="mt-10 text-center text-sm text-gray-500">
           Not a member?{" "}
-          <a
-            href="#"
+          <Link
+            to="/"
             className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
             Start a 14 day free trial
-          </a>
+          </Link>
         </p>
       </div>
     </div>

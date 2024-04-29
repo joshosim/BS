@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Logo from "../images/logo.png";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -6,17 +8,18 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    add(username, password);
+  };
+  const add = (username, password) => {
+    console.log(username + password);
   };
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <a
-          href="#"
-          className="-m-1.5 p-1.5 font-bold text-3xl grid place-content-center"
-        >
-          BS
-        </a>
+        <Link to="/" className="flex justify-center items-center">
+          <img src={Logo} alt="logo" className="w-36" />
+        </Link>
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Sign in to your account
         </h2>
@@ -60,12 +63,12 @@ const Login = () => {
                 Password
               </label>
               <div className="text-sm">
-                <a
-                  href="#"
+                <Link
+                  to="#"
                   className="font-semibold text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot password?
-                </a>
+                </Link>
               </div>
             </div>
             <div className="mt-2">
@@ -95,12 +98,12 @@ const Login = () => {
 
         <p className="mt-10 text-center text-sm text-gray-500">
           Not a member?{" "}
-          <a
-            href="#"
+          <Link
+            to="#"
             className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
             Start a 14 day free trial
-          </a>
+          </Link>
         </p>
       </div>
     </div>
