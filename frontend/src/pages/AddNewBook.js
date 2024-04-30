@@ -1,12 +1,27 @@
 import React, { useState } from "react";
 import Logo from "../images/logo.png";
-
+import { useNavigate } from "react-router-dom";
 const AddNewBook = () => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
 
-  const handleSubmit = () => {
-    const response = fetch("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const book = { title, description };
+    const response = await fetch("http://localhost:4000/api/books/", {
+      method: "POST",
+      body: JSON.stringify(book),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const json = await response.json();
+    alert("Book added successfully!");
+    console.log("Book added successfully: ", json);
+    navigate("/");
   };
   return (
     <div>
@@ -23,35 +38,30 @@ const AddNewBook = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form
-            className="space-y-6"
-            action="#"
-            method="POST"
-            onSubmit={handleSubmit}
-          >
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <div className="mt-2">
                 <input
                   type="text"
-                  placeholder="title"
+                  placeholder="Title of book"
                   onChange={(e) => {
                     setTitle(e.target.value);
                   }}
                   value={title}
                   required
-                  className="block w-full rounded-md border border-blue-500 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="px-2 block w-full rounded-md border border-blue-500 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
               <div className="mt-2">
                 <input
                   value={description}
                   type="text"
-                  placeholder="description"
+                  placeholder="Book description"
                   onChange={(e) => {
                     setDescription(e.target.value);
                   }}
                   required
-                  className="block w-full rounded-md border border-blue-500 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="px-2 block w-full rounded-md border border-blue-500 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>

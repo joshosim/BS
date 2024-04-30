@@ -4,9 +4,13 @@ const mongoose = require("mongoose");
 
 //to get all books on the home page
 const getAllBooks = async (req, res) => {
-  const book = await Book.find({}).sort({ createdAt: -1 });
-
-  res.status(200).json(book);
+  try {
+    const books = await Book.find({}).sort({ createdAt: -1 });
+    res.status(200).json(books);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching books" });
+  }
 };
 //to get a book
 const getABook = async (req, res) => {
