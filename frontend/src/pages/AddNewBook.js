@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import Logo from "../images/logo.png";
 
 const AddNewBook = () => {
-  const [file, setFile] = useState();
-  const handleSubmit = () => {};
+  const [title, setTitle] = useState();
+  const [description, setDescription] = useState();
+
+  const handleSubmit = () => {
+    const response = fetch("");
+  };
   return (
     <div>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -28,10 +32,23 @@ const AddNewBook = () => {
             <div>
               <div className="mt-2">
                 <input
-                  type="file"
-                  placeholder="Select File"
+                  type="text"
+                  placeholder="title"
                   onChange={(e) => {
-                    setFile(e.target.files[0]);
+                    setTitle(e.target.value);
+                  }}
+                  value={title}
+                  required
+                  className="block w-full rounded-md border border-blue-500 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+              <div className="mt-2">
+                <input
+                  value={description}
+                  type="text"
+                  placeholder="description"
+                  onChange={(e) => {
+                    setDescription(e.target.value);
                   }}
                   required
                   className="block w-full rounded-md border border-blue-500 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

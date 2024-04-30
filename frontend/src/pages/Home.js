@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import BookImage from "../images/IMG-20230508-WA0042.jpg";
 import { formatDistanceToNow } from "date-fns";
+import MyImage from "../images/IMG-20230508-WA0042.jpg";
+import { Link } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa";
 
 const Home = () => {
   const [bookList, setBookList] = useState([]);
@@ -39,6 +42,21 @@ const Home = () => {
             </div>
           ))}
         {!bookList && <div>No files found. please add some.</div>}
+        <div className="h-auto w-full rounded-lg border-2 border-blue-500">
+          <img
+            src={MyImage}
+            alt="l"
+            className="h-60 w-full object-cover rounded-t-lg"
+          />
+          <h1 className="pl-3 pt-2 font-bold text-[1rem]">My new book title</h1>
+          <p className="pl-3 text-xs">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
+            cupiditate et quam ima voluptatibus?
+          </p>
+          <div className="flex justify-center items-center gap-2 m-3 bg-blue-700 hover:bg-blue-500 transition-all duration-500 py-2.5 px-4 rounded-xl w-[150px]">
+            <p>See More</p> <FaArrowRight />
+          </div>
+        </div>
       </div>
     </div>
   );
