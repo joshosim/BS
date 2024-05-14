@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Logo from "../images/logo.png";
 import { useNavigate } from "react-router-dom";
 const AddNewBook = () => {
   const [title, setTitle] = useState();
@@ -27,11 +26,6 @@ const AddNewBook = () => {
     <div>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
-            src={Logo}
-            alt="/"
-            className="w-36 flex justify-center items-center"
-          />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 flex items-center gap-2 justify-center">
             Add a New Book
           </h2>

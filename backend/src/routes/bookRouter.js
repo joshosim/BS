@@ -1,20 +1,23 @@
 const express = require("express");
+const Book = require("../models/bookModel");
 
 const {
-  getABook,
-  getAllBooks,
-  addNewBook,
+  // getABook,
+  // getAllBooks,
+  createBook,
+  // deleteBook,
 } = require("../controllers/bookController");
 
 const router = express.Router();
 
 //to get all books on the home page
-router.get("/", getAllBooks);
+// router.get("/", getAllBooks);
 
-//to get a particular book
-router.get("/:id", getABook);
+// //to get a particular book
+// router.get("/:id", getABook);
 
 //to add a new book to the book library
-router.post("/", addNewBook);
+router.post("/book", createBook);
+//deleting a book
 
 module.exports = router;

@@ -4,13 +4,9 @@ const Schema = mongoose.Schema;
 
 const bookSchema = new Schema(
   {
-    title: {
+    bookUrl: {
       type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
+      required: false,
     },
   },
   { timestamps: true }
