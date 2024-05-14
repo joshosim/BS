@@ -34,6 +34,7 @@ const createBook = async (req, res, next) => {
       bookUrl,
       title,
       description,
+      favouriteId: false,
     });
     res.status(200).json(book);
   } catch (err) {

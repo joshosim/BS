@@ -59,7 +59,7 @@ const Home = () => {
                 className="cursor-pointer shadow-xl absolute top-0 right-0 m-4"
                 // onClick={() => handleDelete(bookFile._id)}
               />
-              {favourite ? (
+              {favourite === bookFile.favouriteId ? (
                 <AiOutlineHeart
                   size={40}
                   color="red"

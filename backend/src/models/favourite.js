@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const bookSchema = new Schema(
+const favouriteSchema = new Schema(
   {
     title: {
       type: String,
@@ -23,4 +23,4 @@ const bookSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Book", bookSchema);
+module.exports = mongoose.model("Favourite", favouriteSchema);
