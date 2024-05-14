@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MyImage from "../images/IMG-20230508-WA0042.jpg";
 // import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
-import { AiFillDelete, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { AiFillDelete, AiFillHeart } from "react-icons/ai";
 
 const Favourite = () => {
   const [favourite, setFavourite] = useState([]);

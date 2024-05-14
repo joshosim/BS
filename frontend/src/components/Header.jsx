@@ -1,15 +1,16 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Dialog, Disclosure, Popover } from '@headlessui/react'
 import {
     Bars3Icon,
 } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 import Logo from "../images/logo.png";
+import { SearchContext } from '../context/searchContext';
 // import Home from '../pages/Home';
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-    // const [search, setSearch] = useState('');
+    const { searchValue, handleSearchChange } = useContext(SearchContext);
 
 
     return (
@@ -43,8 +44,8 @@ export default function Header() {
                     </Link>
 
                     <div className='border-2 border-blue-500 rounded-lg flex items-center justify-between p-0'>
-                        <input type="text" className='outline-none px-2 rounded-lg' />
-                        {/* onChange={(e) => setSearch(e.target.value)} */}
+                        <input type="text" className='outline-none px-2 rounded-lg' value={searchValue} onChange={handleSearchChange} />
+
                         <div className=' bg-blue-500 hover:bg-blue-800'>
                             <svg xmlns="http://www.w3.org/2000/svg" color='white' fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 m-2 rounded-l-lg cursor-pointer ">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
