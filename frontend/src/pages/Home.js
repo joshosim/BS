@@ -12,17 +12,17 @@ const Home = () => {
     setFavourite(!favourite);
   };
 
-  const handleDelete = async (id) => {
-    const response = await fetch("http://localhost:4000/api/books/" + id, {
-      method: "DELETE",
-    });
-    // if (!response.ok) {
-    //   throw new Error(`Error deleting book: ${response.statusText}`);
-    // }
-    if (response.ok) {
-      alert("Book deleted successfully!", bookList.id);
-    }
-  };
+  // const handleDelete = async (id) => {
+  //   const response = await fetch("http://localhost:4000/api/books/" + id, {
+  //     method: "DELETE",
+  //   });
+  //   // if (!response.ok) {
+  //   //   throw new Error(`Error deleting book: ${response.statusText}`);
+  //   // }
+  //   if (response.ok) {
+  //     alert("Book deleted successfully!", bookList.id);
+  //   }
+  // };
 
   useEffect(() => {
     const fetchWorkouts = async () => {
@@ -57,7 +57,7 @@ const Home = () => {
               <AiFillDelete
                 size={40}
                 className="cursor-pointer shadow-xl absolute top-0 right-0 m-4"
-                onClick={() => handleDelete(bookFile._id)}
+                // onClick={() => handleDelete(bookFile._id)}
               />
               {favourite ? (
                 <AiOutlineHeart

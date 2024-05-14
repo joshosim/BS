@@ -3,7 +3,7 @@ const Book = require("../models/bookModel");
 
 const {
   // getABook,
-  // getAllBooks,
+  getBooks,
   createBook,
   // deleteBook,
 } = require("../controllers/bookController");
@@ -11,10 +11,7 @@ const {
 const router = express.Router();
 
 //to get all books on the home page
-// router.get("/", getAllBooks);
-
-// //to get a particular book
-// router.get("/:id", getABook);
+router.get("/", getBooks);
 
 //to add a new book to the book library
 router.post("/book", createBook);
