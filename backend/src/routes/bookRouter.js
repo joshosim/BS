@@ -2,10 +2,9 @@ const express = require("express");
 const Book = require("../models/bookModel");
 
 const {
-  // getABook,
   getBooks,
   createBook,
-  // deleteBook,
+  deleteBook,
 } = require("../controllers/bookController");
 
 const router = express.Router();
@@ -16,5 +15,6 @@ router.get("/", getBooks);
 //to add a new book to the book library
 router.post("/book", createBook);
 //deleting a book
+router.delete("/:id", deleteBook);
 
 module.exports = router;

@@ -2,23 +2,24 @@ const Book = require("../models/bookModel");
 
 const mongoose = require("mongoose");
 
-// //to get a book
-// const getABook = async (req, res) => {
-//   const { id } = req.params;
+//to delete a book
+const deleteBook = async (req, res) => {
+  const { id } = req.params;
 
-//   //to confirm if the database has the actual id
-//   if (!mongoose.Types.ObjectId.isValid(id)) {
-//     return res.status(404).json({ error: "No such Book found" });
-//   }
+  //to confirm if the database has the actual id
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such Book found" });
+  }
 
-//   const book = await Book.findById(id);
+  const book = await Book.findOneAndDelete({ _id: id });
 
-//   if (!book) {
-//     return res.status(404).json({ error: "No such Book found" });
-//   }
+  if (!book) {
+    return res.status(404).json({ error: "No such Book found" });
+  }
 
-//   res.status(404).json(book);
-// };
+  res.status(200).json(book);
+};
+
 //to get add a books
 const createBook = async (req, res, next) => {
   const { bookUrl, title, description } = req.body;
@@ -55,8 +56,7 @@ const getBooks = async (req, res) => {
 };
 
 module.exports = {
-  // deleteBook,
-  // getABook,
+  deleteBook,
   getBooks,
   createBook,
 };
