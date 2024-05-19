@@ -2,8 +2,8 @@ import React from "react";
 
 const About = () => {
   const links = [
-    { name: "Open roles", href: "#" },
-    { name: "Internship program", href: "#" },
+    { name: "Upload a Book", href: "/addbook" },
+    { name: "Download a Book", href: "/" },
     { name: "Our values", href: "#" },
     { name: "Meet our leadership", href: "#" },
   ];
@@ -48,12 +48,13 @@ const About = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            Work with us
+            Partner with us
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-300">
-            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-            lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-            fugiat aliqua.
+            We aim to provide an opportunity where new students won't need to
+            search for materials. Instead, they can easily access them on the
+            site by viewing, downloading, and even uploading them for future
+            generations.
           </p>
         </div>
         <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
