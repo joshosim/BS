@@ -10,7 +10,7 @@ import About from "./pages/About";
 import Error from "./pages/Error";
 import AddNewBook from "./pages/AddNewBook";
 
-function App() {
+const App = () => {
   return (
     <div className="h-screen">
       <div className="">
@@ -31,6 +31,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
