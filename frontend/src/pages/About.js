@@ -1,8 +1,10 @@
 import React from "react";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const About = () => {
+  const { user } = useAuthContext();
   const links = [
-    { name: "Upload a Book", href: "/addbook" },
+    { name: "Upload a Book", href: user ? `/addbook` : `/` },
     { name: "Download a Book", href: "/" },
     { name: "Our values", href: "#" },
     { name: "Meet our leadership", href: "#" },
