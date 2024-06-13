@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSignup } from "../hooks/useSIgnup";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signup, error, isLoading } = useSignup();
+  const [passwordVisibility, setPasswordVisibility] = useState(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,7 +71,7 @@ const Signup = () => {
                 </Link>
               </div>
             </div>
-            <div className="mt-2">
+            <div className="mt-2 flex justify-between items-center w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
               <input
                 id="password"
                 name="password"
@@ -77,11 +79,20 @@ const Signup = () => {
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
-                type="password"
+                type={passwordVisibility ? "password" : "text"}
                 autoComplete="current-password"
+                onProgressCapture={true}
                 required
-                className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full text-gray-900 border-none outline-none"
               />
+              {passwordVisibility ? (
+                <FaEyeSlash
+                  size={25}
+                  onClick={() => setPasswordVisibility(false)}
+                />
+              ) : (
+                <FaEye size={25} onClick={() => setPasswordVisibility(true)} />
+              )}
             </div>
           </div>
           <div>

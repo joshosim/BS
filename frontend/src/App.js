@@ -9,6 +9,7 @@ import Favourite from "./pages/Favourite";
 import About from "./pages/About";
 import Error from "./pages/Error";
 import AddNewBook from "./pages/AddNewBook";
+import ForgetPassword from "./pages/ForgottenPassword";
 
 const App = () => {
   return (
@@ -26,6 +27,10 @@ const App = () => {
             <Route path="/addbook" element={<AddNewBook />}></Route>
             <Route path="/about" element={<About />}></Route>
             <Route path="/error" element={<Error />}></Route>
+            <Route
+              path="/forgotten-password"
+              element={<ForgetPassword />}
+            ></Route>
           </Routes>
         </BrowserRouter>
       </div>

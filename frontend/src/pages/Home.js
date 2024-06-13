@@ -5,12 +5,14 @@ import { AiFillDelete, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { SearchContext } from "../context/searchContext";
 import { FavouriteContext } from "../context/favouriteContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+// import { DialogContext } from "../context/DialogContext";
 
 const Home = () => {
   const [bookList, setBookList] = useState([]);
   const { searchValue } = useContext(SearchContext);
   const { favourite, handleFavourite } = useContext(FavouriteContext);
   const { user } = useAuthContext();
+  //const { dialog } = useContext(DialogContext);
 
   const handleDelete = async (id) => {
     const response = await fetch("http://localhost:4000/api/books/" + id, {
@@ -34,6 +36,16 @@ const Home = () => {
       fetchWorkouts();
     }
   }, [user]);
+
+  const handleDownload = (url) => {
+    const anchorElement = document.createElement("a");
+    anchorElement.href = url;
+    anchorElement.download = "BS_PDF" || url.split("/").pop(); // Use filename if provided, otherwise extract from URL
+    anchorElement.style.display = "none"; // Hide the anchor element
+    document.body.appendChild(anchorElement); // Append to body (not strictly necessary)
+    anchorElement.click(); // Simulate a click to initiate download
+    document.body.removeChild(anchorElement);
+  };
 
   return (
     <div
@@ -94,7 +106,7 @@ const Home = () => {
                       <FaDownload
                         size={18}
                         className="cursor-pointer shadow-xl"
-                        // onClick={handleDownload}
+                        onClick={() => handleDownload(bookFile.bookUrl)}
                       />
                     </div>
                   </div>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+// import PopUpMessage from "../components/PopupMessage";
+// import { DialogContext } from "../context/DialogContext";
 const AddNewBook = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -8,6 +10,7 @@ const AddNewBook = () => {
   const [loading, setLoading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const navigate = useNavigate();
+  // const { dialog } = useContext(DialogContext);
 
   const uploadFile = async (type) => {
     const data = new FormData();
@@ -15,9 +18,9 @@ const AddNewBook = () => {
     data.append("upload_preset", type === "image" ? "books_preset" : null);
     data.append("title", title);
     data.append("description", description);
+
     try {
       let cloudname = "dtvgy6zsm";
-
       let api = `https://api.cloudinary.com/v1_1/${cloudname}/image/upload`;
 
       const response = await axios.post(api, data);
